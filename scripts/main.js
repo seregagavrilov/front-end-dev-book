@@ -2,11 +2,16 @@ var DETAIL_IMAGE_SELECTOR = '[data-image-role="target"]';
 var DETAIL_TITLE_SELECTOR = '[data-image-role="title"]';
 var THUMNAIL_LINK_SELECTOR = '[data-image-role="trigger"]';
 
-function setDetails(){
+function setDetails(imageUrl,titleText){
   'use strict';
   var detailImage = document.querySelector(DETAIL_IMAGE_SELECTOR);
-  detailImage.setAttribute('src', 'img/otter3.jpg');
+  detailImage.setAttribute('src', imageUrl);
 
   var detailTitle = document.querySelector(DETAIL_TITLE_SELECTOR);
-  detailTitle.textContent = 'Yoy yo yo';
+  detailTitle.textContent = titleText;
+}
+
+function imageFromThumb(thumbnail) {
+'use strict';
+return thumbnail.getAttribute('data-image-url');
 }
