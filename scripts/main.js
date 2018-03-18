@@ -15,3 +15,8 @@ function imageFromThumb(thumbnail) {
 'use strict';
 return thumbnail.getAttribute('data-image-url');
 }
+
+function titleFromeThumb(thumbnail){
+  'use strict';
+  return thumbnail.getAttribute('data-image-title')
+}
