@@ -41,6 +41,7 @@ function getThumbnailsArray() {
   return thumbnailArray;
 }
 
+
 function initializeEvents(){
   'use strict';
   var thumbnails = getThumbnailsArray();
