@@ -12,11 +12,40 @@ function setDetails(imageUrl,titleText){
 }
 
 function imageFromThumb(thumbnail) {
-'use strict';
-return thumbnail.getAttribute('data-image-url');
+  'use strict';
+  return thumbnail.getAttribute('data-image-url');
 }
 
-function titleFromeThumb(thumbnail){
+function titleFromThumb(thumbnail){
   'use strict';
   return thumbnail.getAttribute('data-image-title')
 }
+
+function setDetailsFromThumb(thumbnail){
+  'use strict'
+  setDetails(imageFromThumb(thumbnail), titleFromThumb(thumbnail))
+}
+
+function addThumbClickHandler(thumb){
+  'use strict';
+  thumb.addEventListener('click', function(event){
+    event.preventDefault();
+    setDetailsFromThumb(thumb);
+  });
+}
+
+function getThumbnailsArray() {
+  'use strict';
+  var thumbnails = document.querySelectorAll(THUMNAIL_LINK_SELECTOR);
+  var thumbnailArray = [].slice.call(thumbnails);
+  return thumbnailArray;
+}
+
+
+function initializeEvents(){
+  'use strict';
+  var thumbnails = getThumbnailsArray();
+  thumbnails.forEach(addThumbClickHandler);
+}
+
+initializeEvents();
