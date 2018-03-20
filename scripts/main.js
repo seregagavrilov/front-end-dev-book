@@ -44,6 +44,7 @@ function getThumbnailsArray() {
   return thumbnailArray;
 }
 
+
 function hidenDetail(){
   'use strict';
   document.body.classList.add(HIDDEN_DETAIL_CLASS);
@@ -64,6 +65,7 @@ function addKeyPressHandler(){
     }
   })
 }
+
 
 function initializeEvents(){
   'use strict';
