@@ -1,6 +1,8 @@
 var DETAIL_IMAGE_SELECTOR = '[data-image-role="target"]';
 var DETAIL_TITLE_SELECTOR = '[data-image-role="title"]';
 var THUMNAIL_LINK_SELECTOR = '[data-image-role="trigger"]';
+var HIDDEN_DETAIL_CLASS = 'hidden-detail';
+var ESC_KEY = 27;
 
 function setDetails(imageUrl,titleText){
   'use strict';
@@ -31,6 +33,7 @@ function addThumbClickHandler(thumb){
   thumb.addEventListener('click', function(event){
     event.preventDefault();
     setDetailsFromThumb(thumb);
+    showDetail();
   });
 }
 
@@ -41,10 +44,41 @@ function getThumbnailsArray() {
   return thumbnailArray;
 }
 
+function hidenDetail(){
+  'use strict';
+  document.body.classList.add(HIDDEN_DETAIL_CLASS);
+}
+
+function showDetail(){
+  'use strict';
+  document.body.classList.remove(HIDDEN_DETAIL_CLASS);
+}
+
+function addKeyPressHandler(){
+  'use strict';
+  document.body.addEventListener('keyup', function(event){
+    event.preventDefault()
+    console.log(event.keyCode)
+    if (event.keyCode === ESC_KEY){
+      hidenDetail();
+    }
+  })
+}
+
 function initializeEvents(){
   'use strict';
   var thumbnails = getThumbnailsArray();
+  // var randomthumb = thumbnails[Math.floor(Math.random() * thumbnails.length)];
+  // thumbnails.pop(randomthumb);
+  // setRadomImagediscrepancy(randomthumb);
+  // thumbnails.push(randomthumb);
   thumbnails.forEach(addThumbClickHandler);
+  addKeyPressHandler();
+}
+
+function setRadomImagediscrepancy(thumb){
+  'use strict';
+  thumb.setAttribute('data-image-url', "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyTb-ZUgVjU4XrtknYWXqxoESJ1f9bROjQlf6wLnDNuMM-BrJy")
 }
 
 initializeEvents();
